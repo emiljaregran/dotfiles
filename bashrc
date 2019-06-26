@@ -3,6 +3,7 @@
 
 alias ls='ls --color=auto'
 alias weather='wego'
+alias sysinfo='neofetch | lolcat'
 
 parse_git_branch()
 {
