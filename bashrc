@@ -1,7 +1,13 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+# Activate vi mode with <Escape>
+set -o vi
+
+# Adding colors
+alias ls='ls -hN --color=auto --group-directories-first'
+alias grep='grep --color=auto'
+
 alias weather='wego'
 alias sysinfo='neofetch | lolcat'
 
