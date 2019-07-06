@@ -8,6 +8,11 @@ set selection-clipboard clipboard
 # Enable incremental search
 set incremental-search true
 
-# Zoom
-map <C-i> zoom in
-map <C-o> zoom out
+map i zoom in
+map o zoom out
+map u scroll half-up
+map d scroll half-down
+map m toggle_page_mode
+map c recolor
+map r rotate
+map p print
