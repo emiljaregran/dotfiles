@@ -1,6 +1,6 @@
 " General Vim settings
     set nocompatible
-    colorscheme gruvbox
+"    colorscheme gruvbox
     set bg=dark
     syntax on
 
@@ -23,6 +23,9 @@
     set hlsearch
     nnoremap <C-l> :nohl<CR><C-l>:echo "Search Cleared"<CR>
 
+    " Toggle line numbers
+    nnoremap <C-n> :set number! <BAR> :set relativenumber!<CR>
+
     " Highlight column 81
         highlight ColorColumn ctermbg=magenta
         call matchadd('colorColumn', '\%81v', 100)
@@ -31,6 +34,8 @@
         highlight ExtraWhitespace ctermbg=red guibg=red
         match ExtraWhitespace /\s\+$/
 
+    " Share clipboard with the system
+        set clipboard=unnamedplus
 " Tab and Movement Management
     nnoremap tn :tabnew<Space>
     nnoremap tk :tabnext<CR>
