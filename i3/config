@@ -154,7 +154,7 @@ bar {
     status_command    python3 ~/dotfiles/i3/statusbar.py
     position          top
     workspace_buttons yes
-    font pango:Hack, FontAwesome 10
+    font pango:Hack, FontAwesome 12
     colors {
         background #253941
         statusline #e7dfd9

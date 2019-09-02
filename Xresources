@@ -1,5 +1,5 @@
 !! Screen DPI
-Xft.dpi: 118
+!Xft.dpi: 118
 
 !! Colorscheme
 *.foreground: #93a1a1
@@ -7,10 +7,10 @@ Xft.dpi: 118
 *.cursorColor: #afbfbf
 
 !! URxvt Appearance
-URxvt.font: xft:DejaVu Sans Mono:style=Regular:size=12
-URxvt.boldFont: xft:DejaVu Sans Mono:style=Bold:size=12
-URxvt.italicFont: xft:DejaVu Sans Mono:style=Italic:size=12
-URxvt.boldItalicFont: xft:DejaVu Sans Mono:style=Bold Italic:size=12
+URxvt.font: xft:DejaVu Sans Mono:style=Regular:size=13
+URxvt.boldFont: xft:DejaVu Sans Mono:style=Bold:size=13
+URxvt.italicFont: xft:DejaVu Sans Mono:style=Italic:size=13
+URxvt.boldItalicFont: xft:DejaVu Sans Mono:style=Bold Italic:size=13
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.geometry: 92x24
