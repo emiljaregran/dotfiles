@@ -1,6 +1,11 @@
 " General Vim settings
     set nocompatible
-"    colorscheme gruvbox
+    colorscheme gruvbox
+
+    " Vim Airline theme
+    let g:airline_powerline_fonts = 1
+    let g:airline#extensions#tabline#enabled = 1
+
     set bg=dark
     syntax on
 
@@ -21,21 +26,26 @@
     set noswapfile
 
     set hlsearch
+    set ignorecase
+    set smartcase
     nnoremap <C-l> :nohl<CR><C-l>:echo "Search Cleared"<CR>
 
     " Toggle line numbers
     nnoremap <C-n> :set number! <BAR> :set relativenumber!<CR>
 
     " Highlight column 81
-        highlight ColorColumn ctermbg=magenta
-        call matchadd('colorColumn', '\%81v', 100)
+        set colorcolumn=81
 
     " Show trailing whitespaces
-        highlight ExtraWhitespace ctermbg=red guibg=red
-        match ExtraWhitespace /\s\+$/
+        let c_space_errors = 1
+        let c_no_tab_space_error = 1
+
+    " Highlight tabs as errors
+        match Error /\t/
 
     " Share clipboard with the system
         set clipboard=unnamedplus
+
 " Tab and Movement Management
     nnoremap tn :tabnew<Space>
     nnoremap tk :tabnext<CR>
