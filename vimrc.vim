@@ -46,6 +46,13 @@
     " Share clipboard with the system
         set clipboard=unnamedplus
 
+    " Enable code folding
+        set foldmethod=syntax
+        set nofoldenable
+
+    " Configure print options
+        set printoptions=paper:A4,duplex:off,syntax:y,formfeed:y
+
 " Tab and Movement Management
     nnoremap tn :tabnew<Space>
     nnoremap tk :tabnext<CR>
@@ -53,7 +60,3 @@
     nnoremap th :tabfirst<CR>
     nnoremap tl :tablast<CR>
 
-    nnoremap H 0
-    nnoremap L $
-    nnoremap J G
-    nnoremap K gg
