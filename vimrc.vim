@@ -26,12 +26,17 @@
     set noswapfile
 
     set hlsearch
+    set incsearch
     set ignorecase
     set smartcase
     nnoremap <C-l> :nohl<CR><C-l>:echo "Search Cleared"<CR>
 
     " Toggle line numbers
-    nnoremap <C-n> :set number! <BAR> :set relativenumber!<CR>
+        nnoremap <silent> <C-n> :set number! <BAR> :set relativenumber!<CR>
+
+    " Enable Git diff in gutter                                                   
+        let g:gitgutter_grep=''                                                   
+        nnoremap <silent> <C-m> :GitGutterSignsToggle<CR>
 
     " Highlight column 81
         set colorcolumn=81
@@ -43,6 +48,11 @@
     " Highlight tabs as errors
         match Error /\t/
 
+    " Fuzzy finding                                                                 
+        set wildmenu                                                                
+        set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico                         
+        set wildignore+=*.pdf,*.psd
+
     " Share clipboard with the system
         set clipboard=unnamedplus
 
@@ -52,11 +62,25 @@
 
     " Configure print options
         set printoptions=paper:A4,duplex:off,syntax:y,formfeed:y
+ 
+" Save undo info between sessions
+    if !isdirectory($HOME."/.vim")
+        call mkdir($HOME."/.vim", "", 0770)
+    endif
+    if !isdirectory($HOME."/.vim/undo-dir")
+        call mkdir($HOME."/.vim/undo-dir", "", 0700)
+    endif
+    set undodir=~/.vim/undo-dir
+    set undofile
 
 " Tab and Movement Management
     nnoremap tn :tabnew<Space>
-    nnoremap tk :tabnext<CR>
-    nnoremap tj :tabprev<CR>
-    nnoremap th :tabfirst<CR>
-    nnoremap tl :tablast<CR>
+    nnoremap <silent> tk :tabnext<CR>
+    nnoremap <silent> tj :tabprev<CR>
+    nnoremap <silent> th :tabfirst<CR>
+    nnoremap <silent> tl :tablast<CR>
+
+" Insert blank lines
+    nnoremap J o<esc>k
+    nnoremap K O<esc>j
 

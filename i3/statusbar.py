@@ -27,13 +27,13 @@ status.register("temp",
 status.register("cpu_usage",
     format="\uf0e4 {usage:02}%")
 
-status.register("network",
-    interface="wlp3s0",
-    color_up="#8AE234",
-    color_down="#EF2929",
-    dynamic_color=False,
-    format_up="\uf1eb {essid} ({quality:.0f}%) \uf093 {bytes_sent} kB/s \uf019 {bytes_recv} kB/s",
-    format_down="\uf1eb Not connected",)
+#status.register("network",
+#    interface="wlp3s0",
+#    color_up="#8AE234",
+#    color_down="#EF2929",
+#    dynamic_color=False,
+#    format_up="\uf1eb {essid} ({quality:.0f}%) \uf093 {bytes_sent} kB/s \uf019 {bytes_recv} kB/s",
+#    format_down="\uf1eb Not connected",)
 
 status.register("backlight",
     interval=1,
@@ -41,21 +41,21 @@ status.register("backlight",
     backlight="intel_backlight",)
 
 # Internal battery
-status.register("battery"
-    ,battery_ident="BAT0",
-    interval=5,
-    format="{status} {consumption:.1f}W {percentage:.0f}% {remaining:%E%hh:%Mm}",
-    alert=True,
-    alert_percentage=15,
-    color="#FFFFFF",
-    critical_color="#FF1919",
-    charging_color="#E5E500",
-    full_color="#D19A66",
-    status={
-        "DIS": "\uf241",
-        "CHR": "\uf1e6",
-        "FULL": "\uf240",
-    },)
+#status.register("battery"
+#    ,battery_ident="BAT0",
+#    interval=5,
+#    format="{status} {consumption:.1f}W {percentage:.0f}% {remaining:%E%hh:%Mm}",
+#    alert=True,
+#    alert_percentage=15,
+#    color="#FFFFFF",
+#    critical_color="#FF1919",
+#    charging_color="#E5E500",
+#    full_color="#D19A66",
+#    status={
+#        "DIS": "\uf241",
+#        "CHR": "\uf1e6",
+#        "FULL": "\uf240",
+#    },)
 
 # External battery
 status.register("battery"
