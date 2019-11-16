@@ -7,7 +7,7 @@ for_window [class="^.*"] border pixel 2
 font pango:DejaVu Sans Mono 8
 
 # Background image
-exec_always --no-startup-id feh --bg-scale ~/Bilder/Bakgrunder/the_most_beautiful_road_in_the_world_2-wallpaper-1600x900.jpg
+exec_always --no-startup-id feh --bg-scale ~/Bilder/Bakgrunder/freebsd-wallpaper.jpg
 
 # Lock the system when going to suspend
 exec --no-startup-id xss-lock -- i3lock -n -i ~/Bilder/lock_screen.png

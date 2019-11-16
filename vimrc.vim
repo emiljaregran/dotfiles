@@ -73,12 +73,20 @@
     set undodir=~/.vim/undo-dir
     set undofile
 
-" Tab and Movement Management
+" Tabs and tab movement
     nnoremap tn :tabnew<Space>
     nnoremap <silent> tk :tabnext<CR>
     nnoremap <silent> tj :tabprev<CR>
     nnoremap <silent> th :tabfirst<CR>
     nnoremap <silent> tl :tablast<CR>
+
+" Split and window movement
+    nmap ss :split<CR><C-w>w
+    nmap sv :vsplit<CR><C-w>w
+    map sh <C-w>h
+    map sk <C-w>k
+    map sj <C-w>j
+    map sl <C-w>l
 
 " Insert blank lines
     nnoremap J o<esc>k
