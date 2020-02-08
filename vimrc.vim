@@ -1,8 +1,39 @@
-" General Vim settings
+" Plugins
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+call plug#begin()
+    Plug 'preservim/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'tpope/vim-fugitive' " Needed for Airline to show current Git branch
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+call plug#end()
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+
+" General settings
     set nocompatible
     colorscheme gruvbox
 
-    " Vim Airline theme
+    " Airline theme
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
 
@@ -31,12 +62,11 @@
     set smartcase
     nnoremap <C-l> :nohl<CR><C-l>:echo "Search Cleared"<CR>
 
-    " Toggle line numbers
-        nnoremap <silent> <C-n> :set number! <BAR> :set relativenumber!<CR>
+    " Toggle line numbers and Git gutter
+        nnoremap <silent> <C-n> :set number! <BAR> :GitGutterSignsToggle <BAR> :set relativenumber!<CR>
 
-    " Enable Git diff in gutter                                                   
-        let g:gitgutter_grep=''                                                   
-        nnoremap <silent> <C-m> :GitGutterSignsToggle<CR>
+    " Toggle NERDTree
+        nnoremap <C-b> :NERDTreeToggle<CR>
 
     " Highlight column 81
         set colorcolumn=81
@@ -48,9 +78,9 @@
     " Highlight tabs as errors
         match Error /\t/
 
-    " Fuzzy finding                                                                 
-        set wildmenu                                                                
-        set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico                         
+    " Fuzzy finding
+        set wildmenu
+        set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
         set wildignore+=*.pdf,*.psd
 
     " Share clipboard with the system
@@ -62,7 +92,7 @@
 
     " Configure print options
         set printoptions=paper:A4,duplex:off,syntax:y,formfeed:y
- 
+
 " Save undo info between sessions
     if !isdirectory($HOME."/.vim")
         call mkdir($HOME."/.vim", "", 0770)
