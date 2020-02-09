@@ -66,7 +66,7 @@ let g:NERDTreeIndicatorMapCustom = {
         nnoremap <silent> <C-n> :set number! <BAR> :GitGutterSignsToggle <BAR> :set relativenumber!<CR>
 
     " Toggle NERDTree
-        nnoremap <C-b> :NERDTreeToggle<CR>
+        nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
     " Highlight column 81
         set colorcolumn=81
