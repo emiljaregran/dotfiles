@@ -51,6 +51,9 @@ bindsym $mod+d exec dmenu_run
 bindsym $mod+n exec i3-sensible-terminal -e ranger
 bindsym $mod+w exec google-chrome-stable
 
+# Forcing certain windows to float (use xprop to find attributes)
+for_window [class="Tk" instance="tk"] floating enable
+
 # Change focus
 bindsym $mod+j focus down
 bindsym $mod+k focus up
