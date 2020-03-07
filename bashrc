@@ -10,6 +10,7 @@ alias grep='grep --color=auto'
 
 alias weather='wego'
 alias sysinfo='neofetch | lolcat'
+alias yubikey-restart='gpg-connect-agent updatestartuptty /bye'
 
 parse_git_branch()
 {
