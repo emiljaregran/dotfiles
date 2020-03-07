@@ -52,7 +52,7 @@ bindsym $mod+n exec i3-sensible-terminal -e ranger
 bindsym $mod+w exec google-chrome-stable
 
 # Forcing certain windows to float (use xprop to find attributes)
-for_window [class="Tk" instance="tk"] floating enable
+for_window [class="Tk" instance="tk"] floating enable border normal 0
 
 # Change focus
 bindsym $mod+j focus down
