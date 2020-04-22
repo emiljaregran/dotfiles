@@ -107,16 +107,33 @@ let g:NERDTreeIndicatorMapCustom = {
     nnoremap tn :tabnew<Space>
     nnoremap <silent> tk :tabnext<CR>
     nnoremap <silent> tj :tabprev<CR>
-    nnoremap <silent> th :tabfirst<CR>
-    nnoremap <silent> tl :tablast<CR>
+
+" Open terminal
+    nnoremap <silent> tt :vertical terminal<CR>
 
 " Split and window movement
-    nmap ss :split<CR><C-w>w
-    nmap sv :vsplit<CR><C-w>w
-    map sh <C-w>h
-    map sk <C-w>k
-    map sj <C-w>j
-    map sl <C-w>l
+    set splitbelow splitright
+    set fillchars+=vert:\ 
+
+    " Change split from vertical to horizontal or horizontal to vertical
+    nnoremap <silent> th <C-w>t<C-w>K
+    nnoremap <silent> tl <C-w>t<C-w>H
+
+    " CTRL + hjkl for navigation
+    nnoremap <C-h> <C-w>h
+    nnoremap <C-j> <C-w>j
+    nnoremap <C-k> <C-w>k
+    nnoremap <C-l> <C-w>l
+
+    " CTRL + arrow for resize
+    noremap <silent> Od :vertical resize +3<CR>
+    noremap <silent> Oc :vertical resize -3<CR>
+    noremap <silent> Oa :resize +3<CR>
+    noremap <silent> Ob :resize -3<CR>
+    noremap <silent> <C-Left> :vertical resize +3<CR>
+    noremap <silent> <C-Right> :vertical resize -3<CR>
+    noremap <silent> <C-Up> :resize +3<CR>
+    noremap <silent> <C-Down> :resize -3<CR>
 
 " Insert blank lines
     nnoremap J o<esc>k
