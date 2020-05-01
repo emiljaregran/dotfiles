@@ -78,6 +78,10 @@ let g:NERDTreeIndicatorMapCustom = {
     " Highlight tabs as errors
         match Error /\t/
 
+    " Spellchecking
+        set spelllang=en
+        set spell
+
     " Fuzzy finding
         set wildmenu
         set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
