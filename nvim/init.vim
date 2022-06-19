@@ -81,6 +81,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim' " Dependency to Telescope
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'joshdick/onedark.vim'
+Plug 'ryanoasis/vim-devicons'
 
 " Auto completion
 Plug 'hrsh7th/nvim-cmp'
