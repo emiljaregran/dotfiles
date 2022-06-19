@@ -137,6 +137,7 @@ EOF
 " Colors
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
+set termguicolors
 set colorcolumn=81
 colorscheme onedark
 let g:airline_powerline_fonts = 1
