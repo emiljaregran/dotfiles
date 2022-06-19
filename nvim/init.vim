@@ -9,37 +9,55 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set mouse=a
-set title
-set undofile
-set number
-set shiftwidth=4
-set tabstop=4
-set nowrap
 set wildmode=longest:full,full
 
-set scrolloff=8
-set sidescrolloff=8
-set foldlevelstart=99
-set foldmethod=syntax
+" Don't wrap long lines
+set nowrap
 
-set noswapfile
-set updatetime=100
+" Keep the window title up-to-date
+set title
 
-set autoindent
+" Number of spaces in a <Tab>
+set tabstop=4
+set softtabstop=4
+set expandtab
+
+" Enable autoindents
 set smartindent
 
+" Number of spaces used for autoindents
+set shiftwidth=4
+
+" Adds line numbers
+set number
+
+" Case insensitive search unless capital letters are used
 set smartcase
 set ignorecase
 
-set expandtab
-set smarttab
-
+" Open splits intuitively
 set splitright
 set splitbelow
 
+" Start scrolling when 8 lines from top, bottom or the sides
+set scrolloff=8
+set sidescrolloff=8
+
+" Save undo history
+set undofile
+
+" Enable mouse support
+set mouse=a
+
 " Show invisible characters
 set list listchars=tab:▸\ ,trail:•,nbsp:•,precedes:←,extends:→
+
+" Update git gutter symbols every 100 ms
+set updatetime=100
+
+" Unfold all folds when opening a file
+set foldlevelstart=99
+set foldmethod=syntax
 
 " Use the system clipboard (requires xclip to be installed)
 set clipboard+=unnamedplus
