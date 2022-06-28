@@ -82,6 +82,7 @@ Plug 'nvim-lua/plenary.nvim' " Dependency to Telescope
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'joshdick/onedark.vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'nvim-treesitter/nvim-treesitter'
 
 " Auto completion
 Plug 'hrsh7th/nvim-cmp'
@@ -149,6 +150,15 @@ require('lspconfig')['pyright'].setup {
     on_attach = on_attach,
     capabilities = capabilities
 }
+
+-- Setup nvim-treesitter.
+require('nvim-treesitter.configs').setup {
+    highlight = {
+        enable = true
+    },
+    ensure_installed = "all"
+}
+
 EOF
 
 
