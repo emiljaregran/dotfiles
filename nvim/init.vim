@@ -154,9 +154,10 @@ require('lspconfig')['pyright'].setup {
 -- Setup nvim-treesitter.
 require('nvim-treesitter.configs').setup {
     highlight = {
-        enable = true
+        enable = true,
+        additional_vim_regex_highlighting = true
     },
-    ensure_installed = "all"
+    ensure_installed = "maintained"
 }
 
 EOF
