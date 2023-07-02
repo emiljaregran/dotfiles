@@ -1,100 +1,105 @@
-# Win-key
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
 set $mod Mod4
+set $term kitty
 
-# Remove titlebar
-for_window [class="^.*"] border pixel 2
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+#font pango:monospace 8
 
-font pango:DejaVu Sans Mono 8
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+font pango:DejaVu Sans Mono 11
 
-# Background image
-exec_always --no-startup-id feh --bg-scale ~/Bilder/Bakgrunder/freebsd-wallpaper.jpg
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex --autostart --environment i3
 
-# Lock the system when going to suspend
-exec --no-startup-id xss-lock -- i3lock -n -i ~/Bilder/lock_screen.png
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
 
-# Enable touchpad tapping
-exec --no-startup-id xinput --set-prop "Synaptics tm2962-001" "libinput Tapping Enabled" 1
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-# Re-map Caps lock to ESC
-exec --no-startup-id setxkbmap -option caps:escape
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
 
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
-# Take screenshot
-bindsym $mod+Print exec gnome-screenshot -i
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $up k
+set $down j
+set $left h
+set $right l
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# Lock screen
-bindsym $mod+shift+x exec i3lock -n -i ~/Bilder/lock_screen.png
+# move tiling windows via drag & drop by left-clicking into the title bar,
+# or left-clicking anywhere into the window while holding the floating modifier.
+tiling_drag modifier titlebar
 
-# Enable/disable external monitor
-bindsym $mod+p exec --no-startup-id ~/dotfiles/i3/xrandr-toggle.sh
+# start a terminal
+bindsym $mod+Return exec $term
 
-# Kill focused window
+# kill focused window
 bindsym $mod+Shift+q kill
 
-# Autostart applications
-exec --no-startup-id nm-applet
+# turn off mouse following
+focus_follows_mouse no
 
-# Start applications
-bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+d exec dmenu_run
-bindsym $mod+n exec i3-sensible-terminal -e ranger
-bindsym $mod+w exec google-chrome-stable
+# start dmenu (a program launcher)
+bindsym $mod+d exec --no-startup-id dmenu_run
+# A more modern dmenu replacement is rofi:
+# bindsym $mod+d exec "rofi -modi drun,run -show drun"
+# There also is i3-dmenu-desktop which only displays applications shipping a
+# .desktop file. It is a wrapper around dmenu, so you need that installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# Forcing certain windows to float (use xprop to find attributes)
-for_window [class="Tk" instance="tk"] floating enable border normal 0
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
 
-# Change focus
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-bindsym $mod+h focus left
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
 
-# Alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# split in horizontal orientation
+bindsym $mod+c split h
 
-# Move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
-
-# Alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# Split in horizontal orientation
-bindsym $mod+b split h
-
-# Split in vertical orientation
+# split in vertical orientation
 bindsym $mod+v split v
 
-# Enter fullscreen mode for the focused container
+# enter fullscreen mode for the focused container top
 bindsym $mod+f fullscreen toggle
 
-# Toggle tiling / floating
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# Change focus between tiling / floating windows
+# change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
-# Focus the parent container
-bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -109,53 +114,90 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# Switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
 
-# Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# Reload the configuration file
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+# reload the configuration file
 bindsym $mod+Shift+c reload
-
-# Restart i3
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-
-# Exit i3
+# exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# Resize window (you can also use the mouse for that)
+# Scratchpads
+bindsym $mod+a [instance="math"] scratchpad show; move position center
+bindsym $mod+i [instance="sysinfo"] scratchpad show; move position center
+bindsym $mod+n [instance="filemanager"] scratchpad show; move position center
+bindsym $mod+u [instance="notes"] scratchpad show; move position center
+
+for_window [instance="notes|math|sysinfo|filemanager"] floating enable
+for_window [instance="notes|math|sysinfo|filemanager"] move scratchpad
+for_window [instance="notes|math|sysinfo|filemanager"] border pixel 5
+for_window [instance="notes|sysinfo|filemanager"] resize set 1300 800
+for_window [instance="math"] resize set 800 300
+
+exec_always --no-startup-id pgrep -f '^\$term --name=math ipython3' || $term --name=math ipython3 --no-banner
+exec_always --no-startup-id pgrep -f '^\$term --name=sysinfo btop' || $term --name=sysinfo btop
+exec_always --no-startup-id pgrep -f '^\$term --name=filemanager ranger' || $term --name=filemanager ranger
+exec_always --no-startup-id pgrep -f '^\$term --name=notes vim' || $term --name=notes vim ~/notes.txt
+
+# Open specific applications in floating mode
+for_window [class="Nitrogen"] floating enable sticky enable border normal
+
+#############################
+## Autostart applications ###
+#############################
+#exec --no-startup-id autorandr -c
+exec --no-startup-id volumeicon
+exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+
+exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
+exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/active false
+
+# resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing l will shrink the window’s width.
-        # Pressing h will grow the window’s width.
-        # Pressing j will shrink the window’s height.
-        # Pressing k will grow the window’s height.
-        bindsym l resize shrink width 5 px or 5 ppt
-        bindsym k resize grow height 5 px or 5 ppt
-        bindsym j resize shrink height 5 px or 5 ppt
-        bindsym h resize grow width 5 px or 5 ppt
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
-        # Back to normal: Enter or Escape or $mod+r
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
@@ -163,20 +205,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3pystatus to display a workspace bar
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
 bar {
-    status_command    python3 ~/dotfiles/i3/statusbar.py
-    position          top
-    tray_output       eDP1
-    workspace_buttons yes
-    font pango:Hack, FontAwesome 12
-    colors {
-        background #253941
-        statusline #e7dfd9
-        separator  #081419
-        focused_workspace  #2aa198 #073642 #eee895
-        active_workspace   #073642 #859900 #839496
-        inactive_workspace #002b36  #002b36   #586e75
-        urgent_workspace   #cb4b16 #dc322f #fdf6e3
-    }
+        status_command i3status
+        position top
 }
