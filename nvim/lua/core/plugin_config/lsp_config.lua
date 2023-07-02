@@ -1,6 +1,6 @@
 require('mason').setup()
 require('mason-lspconfig').setup {
-  ensure_installed = { 'clangd', 'pylsp', 'sumneko_lua' }
+  ensure_installed = { 'clangd', 'pylsp', 'lua_ls' }
 }
 
 -- Use an on_attach function to only map the following keys
@@ -27,7 +27,7 @@ require('lspconfig').pylsp.setup {
   on_attach = on_attach
 }
 
-require('lspconfig').sumneko_lua.setup {
+require('lspconfig').lua_ls.setup {
   capabilities = capabilities,
   on_attach = on_attach
 }
