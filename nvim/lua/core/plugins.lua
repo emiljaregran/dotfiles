@@ -38,6 +38,9 @@ return require('packer').startup(function(use)
   -- Git decorations 
   use 'lewis6991/gitsigns.nvim'
 
+  -- Note taking
+  use 'nvim-neorg/neorg'
+
   -- Treesitter
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 

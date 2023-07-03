@@ -21,6 +21,7 @@ local options = {
   swapfile = false,          -- Do not use a swapfile for the buffer
   clipboard = 'unnamedplus', -- Use the system clipboard for operations
   undofile = true,           -- Save undo history
+  conceallevel = 2,          -- Hide bold, italic etc. specifiers in Neorg
 }
 
 for k, v in pairs(options) do
