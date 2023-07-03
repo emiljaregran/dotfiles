@@ -8,7 +8,6 @@ local options = {
   expandtab = true,
   autoread = true,           -- Automatically read file again if modified outside of nvim
   number = true,             -- Add line numbers 
-  relativenumber = true,     -- Add relative line numbers
   wrap = false,              -- Do not wrap long lines
   foldlevelstart = 99,       -- Unfold all folds when opening a file
   scrolloff = 8,             -- Start scrolling when 8 lines from top or bottom
