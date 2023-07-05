@@ -12,8 +12,9 @@ local on_attach = function(_, _)
 
   nmap{'<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>'}
   nmap{'gd', '<cmd>lua vim.lsp.buf.definition()<CR>'}
-  nmap{'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>'}
+  nmap{'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>'}
   nmap{'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>'}
+  nmap{'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>'}
   nmap{'gr', '<cmd>Telescope lsp_references<CR>'}
   nmap{'<leader>dj', '<cmd>lua vim.diagnostic.goto_next()<CR>'}
   nmap{'<leader>dk', '<cmd>lua vim.diagnostic.goto_prev()<CR>'}
