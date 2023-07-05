@@ -11,23 +11,24 @@ require('gitsigns').setup {
     end
 
     -- Navigation
-    map('n', 'h.', function()
+    map('n', '<leader>gh.', function()
       if vim.wo.diff then return ']c' end
       vim.schedule(function() gs.next_hunk() end)
       return '<Ignore>'
     end, {expr=true})
 
-    map('n', 'h,', function()
+    map('n', '<leader>g,', function()
       if vim.wo.diff then return '[c' end
       vim.schedule(function() gs.prev_hunk() end)
       return '<Ignore>'
     end, {expr=true})
 
     -- Actions
-    map({'n', 'v'}, 'hs', ':Gitsigns stage_hunk<CR>')
-    map({'n', 'v'}, 'hr', ':Gitsigns reset_hunk<CR>')
-    map('n', 'hb', function() gs.blame_line{full=true} end)
-    map('n', 'hd', gs.diffthis)
-    map('n', 'ht', gs.toggle_deleted)
+    map({'n', 'v'}, '<leader>gs', '<cmd>Gitsigns stage_hunk<CR>')
+    map({'n', 'v'}, '<leader>gr', 'Gitsigns reset_hunk<CR>')
+    map('n', '<leader>gb', function() gs.blame_line{full=true} end)
+    map('n', '<leader>gd', gs.diffthis)
+    map('n', '<leader>gt', gs.toggle_deleted)
+
   end
 }
