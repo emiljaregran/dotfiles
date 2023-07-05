@@ -25,7 +25,7 @@ require('gitsigns').setup {
 
     -- Actions
     map({'n', 'v'}, '<leader>gs', '<cmd>Gitsigns stage_hunk<CR>')
-    map({'n', 'v'}, '<leader>gr', 'Gitsigns reset_hunk<CR>')
+    map({'n', 'v'}, '<leader>gr', '<cmd>Gitsigns reset_hunk<CR>')
     map('n', '<leader>gb', function() gs.blame_line{full=true} end)
     map('n', '<leader>gd', gs.diffthis)
     map('n', '<leader>gt', gs.toggle_deleted)
