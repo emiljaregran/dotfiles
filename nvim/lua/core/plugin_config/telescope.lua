@@ -13,10 +13,10 @@ require('telescope').setup{
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('file_browser')
 
-nmap{'<C-f>', '<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending prompt_position=top<CR>'}
-nmap{'ff', '<cmd>Telescope find_files<CR>'}
-nmap{'fg', '<cmd>Telescope live_grep<CR>'}
-nmap{'fm', '<cmd>Telescope man_pages<CR>'}
+Nmap('<C-f>', '<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending prompt_position=top<CR>')
+Nmap('ff', '<cmd>Telescope find_files<CR>')
+Nmap('fg', '<cmd>Telescope live_grep<CR>')
+Nmap('fm', '<cmd>Telescope man_pages<CR>')
 
 local mappings = {}
 
