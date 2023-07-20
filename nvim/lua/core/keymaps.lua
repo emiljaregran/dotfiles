@@ -28,6 +28,11 @@ imap = function(tbl)
 	keymap(tbl)
 end
 
+vmap = function(tbl)
+    tbl['mode'] = 'v'
+    keymap(tbl)
+end
+
 
 -- Tabs and tab movement
 nmap{"tn", "<cmd>tabnew<CR>"}
@@ -42,3 +47,8 @@ nmap{"<C-l>", "<cmd>wincmd l<CR>"}
 
 -- Clear highlighted search
 nmap{"<leader>k", "<cmd>nohlsearch<CR><C-l><cmd>echo \"Search cleared\"<CR>"}
+
+-- Delete without overwriting the copy-paste register
+nmap{"<leader>d", "\"_d"}
+vmap{"<leader>d", "\"_d"}
+nmap{"x", "\"_x"}
