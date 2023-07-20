@@ -30,7 +30,15 @@ require('lspconfig').pylsp.setup {
 
 require('lspconfig').lua_ls.setup {
   capabilities = capabilities,
-  on_attach = on_attach
+  on_attach = on_attach,
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Recognize the global 'vim' variable.
+        globals = {'vim'}
+      }
+    }
+  }
 }
 
 require('lspconfig').clangd.setup {
