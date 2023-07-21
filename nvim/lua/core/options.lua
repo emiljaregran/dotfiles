@@ -22,6 +22,8 @@ local options = {
   clipboard = 'unnamedplus', -- Use the system clipboard for operations
   undofile = true,           -- Save undo history
   conceallevel = 2,          -- Hide bold, italic etc. specifiers in Neorg
+  formatoptions = 'tcrq',    -- Don't start comment with "o" command
+  timeoutlen = 500,          -- Show WhichKey after 500 ms
 }
 
 for k, v in pairs(options) do

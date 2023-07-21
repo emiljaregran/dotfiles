@@ -11,4 +11,4 @@ require('nvim-tree').setup({
     }
 })
 
-Nmap('<leader>n', '<cmd>NvimTreeFindFileToggle<CR>')
+Nmap('<leader>n', '<cmd>NvimTreeFindFileToggle<CR>', {desc='Toggle file explorer'})

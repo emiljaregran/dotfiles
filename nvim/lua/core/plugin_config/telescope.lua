@@ -14,9 +14,9 @@ require('telescope').load_extension('fzf')
 require('telescope').load_extension('file_browser')
 
 Nmap('<C-f>', '<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending prompt_position=top<CR>')
-Nmap('ff', '<cmd>Telescope find_files<CR>')
-Nmap('fg', '<cmd>Telescope live_grep<CR>')
-Nmap('fm', '<cmd>Telescope man_pages<CR>')
+Nmap('<leader>ff', '<cmd>Telescope find_files<CR>', {desc='Telescope Find files'})
+Nmap('<leader>fg', '<cmd>Telescope live_grep<CR>', {desc='Telescope Live grep'})
+Nmap('<leader>fm', '<cmd>Telescope man_pages<CR>', {desc='Telescope Man pages'})
 
 local mappings = {}
 

@@ -41,6 +41,9 @@ return require('packer').startup(function(use)
   -- Note taking
   use 'nvim-neorg/neorg'
 
+  -- Which key
+  use 'folke/which-key.nvim'
+
   -- Treesitter
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
