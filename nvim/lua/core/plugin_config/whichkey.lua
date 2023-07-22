@@ -1,9 +1,6 @@
-local wk = require('which-key')
+-- Use the default settings
+require('which-key').setup()
 
-wk.setup {
-  -- Use the default settings
-}
-
-wk.register({
+require('which-key').register({
   f = { name = 'Find' }
 }, { prefix = '<leader>' })
