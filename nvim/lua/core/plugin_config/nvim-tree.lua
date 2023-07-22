@@ -8,6 +8,9 @@ require('nvim-tree').setup({
             min = 30,
             max = 50
         }
+    },
+    filters = {
+        git_ignored = false
     }
 })
 
