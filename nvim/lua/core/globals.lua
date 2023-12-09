@@ -1,5 +1,6 @@
 local globals = {
   mapleader = ' ',
+  maplocalleader = ','
 }
 
 for k, v in pairs(globals) do
