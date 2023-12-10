@@ -1,6 +1,1 @@
-require('core.autocmds')
-require('core.globals')
-require('core.keymaps')
-require('core.options')
-require('core.plugins')
-require('core.plugin_config')
+require('config')
