@@ -23,6 +23,7 @@ opt.number = true                   -- Show line numbers.
 opt.cursorline = true               -- Enable line marker.
 opt.colorcolumn = '81'              -- Highlight column 81.
 opt.termguicolors = true            -- Enable 24-bit RGB colors in the TUI.
+opt.showmode = false                -- Don't show mode, since it's already in the status line.
 opt.scrolloff = 8                   -- Start scrolling when 8 lines from top or bottom.
 opt.sidescrolloff = 8               -- Start scrolling when 8 columns from the sides.
 opt.conceallevel = 2                -- Hide bold, italic etc. specifiers in Neorg.
