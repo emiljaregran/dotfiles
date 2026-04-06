@@ -1,0 +1,12 @@
+# Development
+brew 'fx'               # JSON viewer
+brew 'git-delta'        # Better git diff
+brew 'lazygit'          # Terminal UI for git commands
+brew 'llvm'             # LSP for C/C++
+brew 'neovim'           # Vim-fork
+brew 'pyright'          # LSP for Python
+brew 'ripgrep'          # Search tool
+
+# Mac OS Utility Apps
+cask 'battery-toolkit'  # Limits battery charge
+cask 'rar'              # RAR Archiver
